@@ -10,7 +10,7 @@ module API
       def authenticate_request!
         return if current_user.present?
 
-        render json: { message: 'Please log in' }, status: :unauthorized
+        render_api_error(APIError::NotAuthenticatedError.new)
       end
 
       def current_user

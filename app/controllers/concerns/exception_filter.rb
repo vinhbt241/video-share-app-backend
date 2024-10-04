@@ -7,6 +7,12 @@ module ExceptionFilter
     rescue_from ActiveRecord::RecordInvalid,
                 ActiveRecord::RecordNotDestroyed,
                 with: ->(e) { log_error(e) && render_api_error(APIError::RecordInvalidError.new(e.record.errors)) }
+
+    rescue_from ActiveRecord::RecordNotFound,
+                with: ->(e) { log_error(e) && render_api_error(APIError::NotFoundError.new) }
+
+    rescue_from APIError::StandardError,
+                with: ->(e) { log_error(e) && render_api_error(e) }
   end
 
   private
