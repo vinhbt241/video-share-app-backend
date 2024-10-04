@@ -3,12 +3,14 @@
 source 'https://rubygems.org'
 
 gem 'bcrypt'
+gem 'blueprinter'
 gem 'bootsnap', require: false
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'jwt'
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
+gem 'rack-cors'
 gem 'rails', '~> 7.2.1'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
@@ -28,6 +30,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate'
   gem 'error_highlight', '>= 0.4.0', platforms: [:ruby]
   gem 'web-console'
 end
