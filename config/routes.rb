@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         end
       end
       resources :sessions, only: [:create]
+      resources :videos, only: %i[index create]
     end
   end
 end
