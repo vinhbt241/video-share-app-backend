@@ -11,7 +11,19 @@
 #  updated_at   :datetime         not null
 #
 class Video < ApplicationRecord
+  # associations
   belongs_to :user
 
+  # validations
   validates :resource_url, presence: true
+
+  # scopes
+  scope :active, -> { where(active: true) }
+
+  # callbacks
+  after_create :process_resource_url
+
+  def process_resource_url
+    VideoServices::ProcessResourceUrlService.call(video: self)
+  end
 end

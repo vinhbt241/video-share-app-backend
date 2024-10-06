@@ -15,3 +15,9 @@ Metrics/BlockLength:
 
 Style/Documentation:
   Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false

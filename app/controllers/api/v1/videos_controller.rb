@@ -3,12 +3,12 @@
 module API
   module V1
     class VideosController < BaseController
-      skip_before_action :authenticate_request!, only: [:create]
+      skip_before_action :authenticate_request!, only: [:index]
 
       def index
-        video = Video.order(created_at: :desc)
+        video = Video.active.order(created_at: :desc)
 
-        render_resource_collection(video, each_serializer: VideoSerizer)
+        render_resource_collection(video, each_serializer: VideoSerializer)
       end
 
       def create

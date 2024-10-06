@@ -13,5 +13,12 @@
 class VideoSerializer < ApplicationSerializer
   identifier :id
 
-  field :resource_url
+  fields :title,
+         :description,
+         :embedded_id,
+         :likes
+
+  field :created_by do |video|
+    video.user.email
+  end
 end
