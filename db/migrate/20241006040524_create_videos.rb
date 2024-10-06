@@ -7,7 +7,7 @@ class CreateVideos < ActiveRecord::Migration[7.2]
       t.string :title
       t.string :description
       t.integer :likes
-      t.boolean :active, default: false
+      t.integer :status, default: 0
       t.timestamps
     end
   end

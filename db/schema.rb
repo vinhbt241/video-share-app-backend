@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_06_040524) do
     t.string "title"
     t.string "description"
     t.integer "likes"
-    t.boolean "active", default: false
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_videos_on_user_id"

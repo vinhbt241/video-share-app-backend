@@ -16,7 +16,7 @@ module VideoServices
           likes: yt_video.like_count,
           description: yt_video.description,
           embedded_id: yt_video.id,
-          active: true
+          status: :active
         )
       end
     end
