@@ -9,7 +9,7 @@ module API
         user = User.find_by!(email: session_params[:email])
 
         if user.authenticate(session_params[:password])
-          render_resource(user, view: :with_token)
+          render_resource(user, view: :with_token, status: :created)
         else
           render_api_error(APIError::NotFoundError.new)
         end

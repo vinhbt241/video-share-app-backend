@@ -24,3 +24,9 @@ Metrics/MethodLength:
 
 RSpec/ExampleLength:
   Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Enabled: false
+
+RSpec/VariableName:
+  Enabled: false
