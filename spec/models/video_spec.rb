@@ -28,12 +28,8 @@ RSpec.describe Video, type: :model do
 
     context 'when the video is created' do
       it 'process resource url' do
-        allow(VideoServices::ProcessResourceUrlService).to receive(:call)
-
-        video.save
-        video.reload
-
-        expect(VideoServices::ProcessResourceUrlService).to have_received(:call).with(video:)
+        ActiveJob::Base.queue_adapter = :test
+        expect { video.save }.to have_enqueued_job(ProcessResourceUrlJob)
       end
     end
 

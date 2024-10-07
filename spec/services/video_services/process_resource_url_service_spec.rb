@@ -30,7 +30,7 @@ describe VideoServices::ProcessResourceUrlService do
 
         described_class.call(video:)
 
-        expect(Yt::Video).to have_received(:new).twice.with(url: video.resource_url)
+        expect(Yt::Video).to have_received(:new).with(url: video.resource_url)
       end
     end
   end

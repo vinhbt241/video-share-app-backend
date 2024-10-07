@@ -25,7 +25,7 @@ class Video < ApplicationRecord
   before_update :broadcast_new_active_video
 
   def process_resource_url
-    VideoServices::ProcessResourceUrlService.call(video: self)
+    ProcessResourceUrlJob.perform_later(video_id: id)
   end
 
   def broadcast_new_active_video
