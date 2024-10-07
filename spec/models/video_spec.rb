@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: videos
@@ -11,5 +13,41 @@
 require 'rails_helper'
 
 RSpec.describe Video, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # associations
+  it { is_expected.to belong_to(:user) }
+
+  # validations
+  it { is_expected.to validate_presence_of(:resource_url) }
+
+  # attributes
+  it { is_expected.to define_enum_for(:status) }
+
+  # callbacks
+  describe 'callbacks' do
+    let(:video) { build(:video) }
+
+    context 'when the video is created' do
+      it 'process resource url' do
+        allow(VideoServices::ProcessResourceUrlService).to receive(:call)
+
+        video.save
+        video.reload
+
+        expect(VideoServices::ProcessResourceUrlService).to have_received(:call).with(video:)
+      end
+    end
+
+    context 'when video status is updated to active' do
+      let(:video) { build(:video) }
+
+      it 'broadcast that video to NewVideo channel' do
+        allow(VideoServices::ProcessResourceUrlService).to receive(:call)
+        video.save
+        video.reload
+        expect do
+          video.update(status: :active)
+        end.to have_broadcasted_to('VideoChannel').with(VideoSerializer.render_as_json(video))
+      end
+    end
+  end
 end

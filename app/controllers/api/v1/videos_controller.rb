@@ -6,7 +6,7 @@ module API
       skip_before_action :authenticate_request!, only: [:index]
 
       def index
-        video = Video.active.order(created_at: :desc)
+        video = Video.active.order(created_at: :desc).includes(:user)
 
         render_resource_collection(video, each_serializer: VideoSerializer)
       end

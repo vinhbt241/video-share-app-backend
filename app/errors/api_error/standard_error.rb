@@ -4,7 +4,7 @@ module APIError
   class StandardError < ::StandardError
     attr_reader :message, :errors, :status, :code
 
-    def initialize(message: nil, errors: [], status: nil, code: nil) # rubocop:disable Lint/MissingSuper
+    def initialize(message: nil, errors: [], status: nil, code: nil)
       @message = message
       @errors = errors
       @status = status

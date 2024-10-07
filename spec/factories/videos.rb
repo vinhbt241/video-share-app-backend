@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: videos
@@ -10,6 +12,7 @@
 #
 FactoryBot.define do
   factory :video do
-    
+    resource_url { 'http://example_url.com' }
+    association :user
   end
 end
