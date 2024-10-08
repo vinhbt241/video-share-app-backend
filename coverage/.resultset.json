@@ -414,6 +414,21 @@
           null
         ]
       },
+      "/home/vinh/projects/video-share-app/backend/config/initializers/sidekiq.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
       "/home/vinh/projects/video-share-app/backend/config/initializers/yt.rb": {
         "lines": [
           null,
@@ -1370,6 +1385,6 @@
         ]
       }
     },
-    "timestamp": 1728314126
+    "timestamp": 1728404504
   }
 }
