@@ -1,8 +1,13 @@
 # Funny videos - Share your humour!
 
 ## Introduction
-This repo contains server side source code for Funny Videos - a platform where user can watch funny Youtube videos and share theirs. Repo's main features include:
-- Receiving and processing API requests
+This repo contains server side source code for Funny Videos - a platform where user can watch funny Youtube videos and share theirs. With Funny Videos, you can:
+- Signup & Login.
+- Share your favorite Youtube Video.
+- Watch all of shared videos - by you and all other users!
+- Receive notification in real time when a user share their video
+
+The back-end also offers additional features:
 - Displaying API documentation
 - Displaying test coverage percentage (development only)
 
@@ -98,7 +103,7 @@ RAILS_MASTER_KEY={YOUR_MASTER_KEY} JWT_SECRET={YOUR_JWT_SECRET} YOUTUBE_API_KEY=
 ## Usage
 - When started, the server will receive and process API requests coming from Funny Video clients.
 - You can check out the API documentation created by Swagger at `http://localhost:3000/api-docs` in development or follow [this URL](http://ec2-13-212-49-232.ap-southeast-1.compute.amazonaws.com:3000/api-docs/index.html).
-- You can check out the test coverage by running the following command:
+- You can check out the test coverage percentage by running the following command:
 ```
 open coverage/index.html
 ```
