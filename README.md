@@ -66,18 +66,13 @@ Install Docker Compose standalone: [Install instructions](https://docs.docker.co
 ## Database Setup
 Run the following commands:
 ```
-rails db:create
-rails db:migrate
+bundle exec rails db:setup
 ```
 
 ## Running the Application
-To start a Rails development server, run the following command:
+To start a Rails development server & Sidekiq worker, run the following command:
 ```
-rails s
-```
-To start a worker instance with Sidekiq, run the following command:
-```
-bundle exec sidekiq
+./bin/dev
 ```
 
 ### Using Docker
@@ -97,7 +92,7 @@ docker build -t video-share-app -f Dockerfile.prod .
 ```
 For running a production container, you can choose to either use an external service for database and cache, such as AWS RDS or ElasticCache, or simply start a container with these services included. Check out the `compose.prod.yaml` file for the second approach. To start the container, simply run:
 ```
-RAILS_MASTER_KEY={YOUR_MASTER_KEY} JWT_SECRET={YOUR_JWT_SECRET} YOUTUBE_API_KEY=${YOUR_YOUTUBE_API_KEY} docker compose -f compose.prod.yaml up -d
+JWT_SECRET={YOUR_JWT_SECRET} YOUTUBE_API_KEY=${YOUR_YOUTUBE_API_KEY} docker compose -f compose.prod.yaml up -d
 ```
 
 ## Usage
