@@ -22,7 +22,6 @@ gem 'yt'
 group :development, :test do
   gem 'brakeman', require: false
   gem 'debug', require: 'debug/prelude'
-  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails', '~> 7.0.0'

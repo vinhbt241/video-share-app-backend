@@ -3,11 +3,11 @@
 class JwtToken
   class << self
     def encode(payload)
-      JWT.encode(payload, ENV['JWT_SECRET'])
+      JWT.encode(payload, Rails.application.credentials[:jwt_secret])
     end
 
     def decode(token)
-      JWT.decode(token, ENV['JWT_SECRET'])[0]
+      JWT.decode(token, Rails.application.credentials[:jwt_secret])[0]
     rescue StandardError
       nil
     end
