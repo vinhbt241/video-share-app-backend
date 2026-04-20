@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   mount Sidekiq::Web => '/sidekiq'
+  mount ActionCable.server => '/cable'
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   get 'service-worker' => 'rails/pwa#service_worker', as: :pwa_service_worker

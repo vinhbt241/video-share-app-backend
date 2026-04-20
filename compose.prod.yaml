@@ -24,8 +24,6 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: 6379
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
-      JWT_SECRET: ${JWT_SECRET}
-      YOUTUBE_API_KEY: ${YOUTUBE_API_KEY}
     ports:
       - 3000:3000
     depends_on:
@@ -46,8 +44,6 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: 6379
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
-      JWT_SECRET: ${JWT_SECRET}
-      YOUTUBE_API_KEY: ${YOUTUBE_API_KEY}
     depends_on:
       - db
       - redis
