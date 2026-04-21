@@ -1,10 +1,16 @@
 development:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: <%= ENV["REDIS_URL"] || Rails.application.credentials.dig(:redis, :url) %>
+  channel_prefix: video_share_app_development
 
 test:
   adapter: test
 
 production:
   adapter: redis
-  url: <%= Rails.application.credentials[:redis_url] || "redis://localhost:6379/1" %>
+  url: <%= 
+    ENV["REDIS_URL"] ||
+    Rails.application.credentials.dig(:redis, :url) ||
+    (ENV["SECRET_KEY_BASE_DUMMY"] ? "redis://localhost:6379/1" : raise("Missing Redis URL for ActionCable"))
+    %>
+  channel_prefix: video_share_app_production
