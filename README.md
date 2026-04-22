@@ -9,7 +9,7 @@ This repo contains server side source code for Funny Videos - a platform where u
 
 The back-end also offers additional features:
 - Displaying API documentation
-- Displaying test coverage percentage (development only)
+- Displaying test coverage percentage (local only)
 
 ## Prerequisites
 There are two approaches for running the project:
@@ -28,14 +28,21 @@ Another way is to run the project via Docker. In that case, the list is reduced 
 
 ## Installation & Configuration
 First thing first, let's clone this project:
+
 ```
 git clone https://github.com/vinhbt241/video-share-app-backend.git
 ```
-Navigate to the project's directory and run the following command:
+
+Generate Rails credentails secret keys for test & development:
+
 ```
-cp .example.env .env
+EDITOR=nano bin/rails credentials:edit --environment test
+EDITOR=nano bin/rails credentials:edit --environment development
 ```
-Add your credentials to the newly created `.env` file. For YOUTUBE_API_KEY, here are the necessary instructions to get one::
+
+See `example.\[environment\].yml` for secret variables from each environment.
+
+For Youtube API key, here are the necessary instructions to get one::
 1. Log in to Google Developers Console.
 2. Create a new project.
 3. On the new project dashboard, click Explore & Enable APIs.
@@ -76,11 +83,11 @@ To start a Rails development server & Sidekiq worker, run the following command:
 ```
 
 ### Using Docker
-If Docker Compose Plugin is installed, then run:
+If Docker Compose Plugin is installed:
 ```
 docker compose -f compose.dev.yaml up
 ```
-If Docker Compose standalone is installed, then run:
+If Docker Compose standalone is installed:
 ```
 docker-compose -f compose.dev.yaml up
 ```
@@ -90,7 +97,7 @@ Run the following command to build a new Docker image with the `video-share-app`
 ```
 docker build -t video-share-app -f Dockerfile.prod .
 ```
-For running a production container, you can choose to either use an external service for database and cache, such as AWS RDS or ElasticCache, or simply start a container with these services included. Check out the `compose.prod.yaml` file for the second approach. To start the container, simply run:
+For running a production container, you can choose to either use an external service for database and cache, such as AWS RDS or ElasticCache, or simply start a container with these services included. Check out the `compose.prod.yaml` file for the first. To start the container, simply run:
 ```
 docker compose -f compose.prod.yaml up -d
 ```
