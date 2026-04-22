@@ -93,7 +93,8 @@ docker-compose -f compose.dev.yaml up
 ```
 
 ## Docker Deployment
-Run the following command to build a new Docker image with the `video-share-app` tag for production:
+This project uses Google Cloud Run & Github repo trigger for CD. When new changes are pushed to main branch, Cloud Run will detect them and spin up new server/worker instances using `Dockerfile.prod`.
+For manual deployment, build a new Docker image with the `video-share-app` tag for production:
 ```
 docker build -t video-share-app -f Dockerfile.prod .
 ```
@@ -104,7 +105,7 @@ docker compose -f compose.prod.yaml up -d
 
 ## Usage
 - When started, the server will receive and process API requests coming from Funny Video clients.
-- You can check out the API documentation created by Swagger at `http://localhost:3000/api-docs` in development or follow [this URL](http://ec2-13-212-49-232.ap-southeast-1.compute.amazonaws.com:3000/api-docs/index.html).
+- You can check out the API documentation created by Swagger at `http://localhost:3000/api-docs` in development or on [live demo](https://api.video-share-app.store/api-docs/index.html).
 - You can check out the test coverage percentage by running the following command:
 ```
 open coverage/index.html
